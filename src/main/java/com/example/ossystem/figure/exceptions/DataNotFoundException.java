@@ -1,4 +1,4 @@
-package com.example.ossystem.figure;
+package com.example.ossystem.figure.exceptions;
 
 public class DataNotFoundException extends RuntimeException {
 }

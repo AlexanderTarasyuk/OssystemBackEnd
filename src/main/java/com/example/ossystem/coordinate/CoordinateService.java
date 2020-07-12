@@ -1,12 +1,10 @@
 package com.example.ossystem.coordinate;
 
 
-import com.example.ossystem.figure.DataNotFoundException;
+import com.example.ossystem.figure.exceptions.DataNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.val;
 import lombok.var;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

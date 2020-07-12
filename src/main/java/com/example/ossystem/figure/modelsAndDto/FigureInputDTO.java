@@ -1,4 +1,4 @@
-package com.example.ossystem.figure;
+package com.example.ossystem.figure.modelsAndDto;
 
 import lombok.Builder;
 import lombok.Data;
