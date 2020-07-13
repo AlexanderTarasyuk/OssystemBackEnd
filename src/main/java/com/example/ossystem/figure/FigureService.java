@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import lombok.var;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -31,6 +32,7 @@ public class FigureService {
         return repository.save(figure);
     }
 
+    @Transactional
     public Figure updateFigure(Integer figureId, Figure newFigureData) {
         val figure = repository.findById(figureId)
                 .orElseThrow(() -> new FigureNotFoundException(figureId));

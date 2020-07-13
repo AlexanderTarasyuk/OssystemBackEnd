@@ -5,8 +5,10 @@ import com.example.ossystem.figure.modelsAndDto.Figure;
 import com.example.ossystem.figure.modelsAndDto.FigureOutPutDTO;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
+import org.hibernate.StaleObjectStateException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -65,11 +67,12 @@ public class FigureController {
         log.info("Created " + createdFigure.toString());
         return ResponseEntity.created(uriBuilder.build(createdFigure.getId())).build();
     }
+    @Retryable(StaleObjectStateException.class)
 
     @PutMapping("/figures/{id}")
-    public ResponseEntity<?> updateFigure(@PathVariable Integer figureId,
+    public ResponseEntity<?> updateFigure(@PathVariable Integer id,
                                           @Valid @RequestBody Figure figureDto) {
-        figureService.updateFigure(figureId, figureDto);
+        figureService.updateFigure(id, figureDto);
         return ResponseEntity.ok().build();
     }
 
