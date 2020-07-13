@@ -9,5 +9,5 @@ FlyWay
 TestContainers
 Gradle
 
-Start app as SprinBoot app on port 8081
+Start app as SpringBoot app on port 8081
 
