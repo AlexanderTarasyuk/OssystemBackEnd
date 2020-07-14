@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FiguresRepository extends JpaRepository<Figure, Integer> {
+
+    Figure findByFirstName(String firstName);
+
 }

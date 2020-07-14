@@ -50,4 +50,13 @@ public class Figure {
         this.version = version;
         this.firstName = firstName;
     }
+
+    public Figure(String firstName) {
+        this.firstName = firstName;
+        this.createdDate = LocalDateTime.now();
+        this.updatedDate = LocalDateTime.now();
+    }
+
+
+
 }

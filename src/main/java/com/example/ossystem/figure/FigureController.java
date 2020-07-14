@@ -7,11 +7,14 @@ import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.hibernate.StaleObjectStateException;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
+
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -39,7 +42,8 @@ public class FigureController {
 
     @GetMapping("/figures")
     public List<FigureOutPutDTO> getFiguresPaginatedList() {
-
+//this line just to show inderstanding of pagination in spring boot
+//        final Pageable pageable = PageRequest.of(6, 5, true);
         List<FigureOutPutDTO> list = figureService.getFiguresPaginatedList().stream()
                 .map(figure -> new FigureOutPutDTO(figure.getId(), figure.getFirstName(),
                         figure.getCreatedDate().toString(), figure.getUpdatedDate().toString()))
@@ -67,6 +71,7 @@ public class FigureController {
         log.info("Created " + createdFigure.toString());
         return ResponseEntity.created(uriBuilder.build(createdFigure.getId())).build();
     }
+
     @Retryable(StaleObjectStateException.class)
 
     @PutMapping("/figures/{id}")

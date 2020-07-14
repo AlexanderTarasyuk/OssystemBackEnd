@@ -5,7 +5,8 @@ import com.example.ossystem.figure.modelsAndDto.Figure;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
-import lombok.var;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,5 +49,9 @@ public class FigureService {
                 .orElseThrow(() -> new FigureNotFoundException(id));
         repository.delete(figure);
         return "Deleted";
+    }
+
+    public void deleteAll() {
+        repository.deleteAll();
     }
 }

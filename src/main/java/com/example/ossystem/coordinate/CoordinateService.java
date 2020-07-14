@@ -4,7 +4,7 @@ package com.example.ossystem.coordinate;
 import com.example.ossystem.figure.exceptions.DataNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.val;
-import lombok.var;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +15,6 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class CoordinateService {
-
 
     private final CoordinatesRepository repository;
 
@@ -60,7 +59,6 @@ public class CoordinateService {
     public String deleteCoordinate(Long coordId) {
         val coordinate = repository.findById(coordId)
                 .orElseThrow(() -> new DataNotFoundException());
-        // Shift other coordinates position while delete
         if (coordinate.getPosition() < repository.getMaxPosition())
             repository.shiftDown(coordinate.getPosition());
         repository.delete(coordinate);
