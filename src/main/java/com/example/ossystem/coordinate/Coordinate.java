@@ -27,9 +27,6 @@ public class Coordinate {
     @Min(value = 0, message = "Should be positive")
     private int y;
 
-    {
-    }
-
     public Coordinate(int position, @Min(value = 0, message = "Should be positive") int x, @Min(value = 0, message = "Should be positive") int y) {
         this.position = position;
         this.x = x;

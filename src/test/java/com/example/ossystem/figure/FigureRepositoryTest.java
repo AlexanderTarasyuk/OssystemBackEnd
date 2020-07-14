@@ -24,16 +24,7 @@ public class FigureRepositoryTest {
 
     @Test
     public void whenFindByName_thenReturnEmployee() {
-        // given
-        Coordinate coordinate = new Coordinate(1, 2, 3);
-        repository.saveAndFlush(coordinate);
 
-        // when
-        Coordinate found = repository.findByPosition(1);
-
-        // then
-        assertThat(coordinate)
-                .isEqualTo(found);
     }
 
 
