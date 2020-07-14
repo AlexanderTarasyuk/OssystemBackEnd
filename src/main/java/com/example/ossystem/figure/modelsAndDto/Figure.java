@@ -36,4 +36,11 @@ public class Figure {
         this.createdDate = LocalDateTime.now();
         this.updatedDate = LocalDateTime.now();
     }
+
+    public Figure(int i, String circle) {
+        id = i;
+        firstName = circle;
+        this.createdDate = LocalDateTime.now();
+        this.updatedDate = LocalDateTime.now();
+    }
 }

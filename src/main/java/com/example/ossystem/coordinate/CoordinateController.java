@@ -55,8 +55,8 @@ public class CoordinateController {
 
     @DeleteMapping("/coordinates/{id}")
     @ResponseStatus(NO_CONTENT)
-    public void deleteCoordinate(@PathVariable(value = "id") Long coordId) {
-        coordService.deleteCoordinate(coordId);
+    public void deleteCoordinate(@PathVariable(value = "id") Long id) {
+        coordService.deleteCoordinate(id);
     }
 
     @ExceptionHandler

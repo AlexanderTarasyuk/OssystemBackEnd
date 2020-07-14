@@ -68,7 +68,7 @@ public class FigureController {
         figure.setCreatedDate(LocalDateTime.now());
         figure.setUpdatedDate(LocalDateTime.now());
         val createdFigure = figureService.createFigure(figure);
-        log.info("Created " + createdFigure.toString());
+//        log.info("Created " + createdFigure.toString());
         return ResponseEntity.created(uriBuilder.build(createdFigure.getId())).build();
     }
 

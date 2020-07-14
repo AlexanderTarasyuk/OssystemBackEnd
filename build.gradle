@@ -29,8 +29,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-//    testCompile "org.testcontainers:mysql:1.14.3"
-
+    testCompile "org.testcontainers:mysql:1.14.3"
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
