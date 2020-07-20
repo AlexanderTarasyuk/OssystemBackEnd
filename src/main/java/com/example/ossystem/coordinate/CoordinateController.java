@@ -18,7 +18,7 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
  * The type Coordinate controller.
  */
 @RestController
-@CrossOrigin(value = "${general.port}")
+@CrossOrigin(origins = "${general.port}")
 @AllArgsConstructor
 
 public class CoordinateController {

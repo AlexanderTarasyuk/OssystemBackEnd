@@ -27,7 +27,7 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
  * The type Figure controller.
  */
 @RestController
-@CrossOrigin(value = "${general.port}")
+@CrossOrigin(origins = "${general.port}")
 @Slf4j
 public class FigureController {
 
