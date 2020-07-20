@@ -8,6 +8,9 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
+/**
+ * The type Coordinate.
+ */
 @Data
 @Entity
 @AllArgsConstructor
@@ -27,6 +30,13 @@ public class Coordinate {
     @Min(value = 0, message = "Should be positive")
     private int y;
 
+    /**
+     * Instantiates a new Coordinate.
+     *
+     * @param position the position
+     * @param x        the x
+     * @param y        the y
+     */
     public Coordinate(int position, @Min(value = 0, message = "Should be positive") int x, @Min(value = 0, message = "Should be positive") int y) {
         this.position = position;
         this.x = x;

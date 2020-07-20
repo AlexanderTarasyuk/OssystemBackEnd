@@ -9,7 +9,6 @@ import java.sql.Timestamp;
 @Builder
 public class FigureInputDTO {
 
-
     private int id;
     private String name;
     private Timestamp createdAt;
