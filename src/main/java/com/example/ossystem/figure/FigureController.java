@@ -23,14 +23,23 @@ import java.util.stream.Collectors;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
+/**
+ * The type Figure controller.
+ */
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(value = "${general.port}")
 @Slf4j
 public class FigureController {
 
     private final FigureService figureService;
     private final UriBuilder uriBuilder;
 
+    /**
+     * Instantiates a new Figure controller.
+     *
+     * @param figureService the figure service
+     * @param hostName      the host name
+     */
     public FigureController(FigureService figureService,
                             @Value("${figure.host-name:localhost}") String hostName) {
         this.figureService = figureService;
@@ -40,6 +49,11 @@ public class FigureController {
                 .path("/figures/{id}");
     }
 
+    /**
+     * Gets figures paginated list.
+     *
+     * @return the figures paginated list
+     */
     @GetMapping("/figures")
     public List<FigureOutPutDTO> getFiguresPaginatedList() {
 //this line just to show inderstanding of pagination in spring boot
@@ -52,6 +66,12 @@ public class FigureController {
         return list;
     }
 
+    /**
+     * Gets figure by id.
+     *
+     * @param id the id
+     * @return the figure by id
+     */
     @GetMapping("/figures/{id}")
     public FigureOutPutDTO getFigureById(@PathVariable Integer id) {
         val maybeFigure = figureService.getFigureById(id);
@@ -63,6 +83,12 @@ public class FigureController {
         return figureOutPutDTO;
     }
 
+    /**
+     * Create figure response entity.
+     *
+     * @param figure the figure
+     * @return the response entity
+     */
     @PostMapping("/figures")
     public ResponseEntity<?> createFigure(@RequestBody Figure figure) {
         figure.setCreatedDate(LocalDateTime.now());
@@ -72,6 +98,13 @@ public class FigureController {
         return ResponseEntity.created(uriBuilder.build(createdFigure.getId())).build();
     }
 
+    /**
+     * Update figure response entity.
+     *
+     * @param id        the id
+     * @param figureDto the figure dto
+     * @return the response entity
+     */
     @Retryable(StaleObjectStateException.class)
 
     @PutMapping("/figures/{id}")
@@ -81,6 +114,11 @@ public class FigureController {
         return ResponseEntity.ok().build();
     }
 
+    /**
+     * Delete figure.
+     *
+     * @param number the number
+     */
     @DeleteMapping("/figures/{number}")
     @ResponseStatus(NO_CONTENT)
     public void deleteFigure(@PathVariable(value = "number") Integer number) {
@@ -88,6 +126,11 @@ public class FigureController {
         figureService.deleteFigure(number);
     }
 
+    /**
+     * No such figure.
+     *
+     * @param ex the ex
+     */
     @ExceptionHandler
     @ResponseStatus(BAD_REQUEST)
     public void noSuchFigure(FigureNotFoundException ex) {
